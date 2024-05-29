@@ -144,3 +144,28 @@ export async function authenticate(
     throw error;
   }
 }
+
+
+
+
+ 
+export async function createCustomer( formData: FormData) {
+
+  const { name, phone, ccp,willaya,ville } = FormData.data;
+
+  // Insert data into the database
+  try {
+   
+   console.log(FormData.data)
+  } catch (error) {
+    // If a database error occurs, return a more specific error.
+    return {
+      message: 'Database Error: Failed to Create Invoice.',
+    };
+  }
+ 
+  // Revalidate the cache for the invoices page and redirect the user.
+  revalidatePath('/dashboard/customers');
+  redirect('/dashboard/customers');
+}
+
